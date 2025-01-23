@@ -1,4 +1,19 @@
 import customtkinter as ctk
+from tkinter import *
+
+def nao_entry(entrada): #Função para deletar o que esta escrito dentro da caixa de entrada
+    entrada.delete(0, END)
+
+def voltar_func(atual, anterior): #Função para voltar a pagina anterior dentro nas paginas temporarias do def
+    atual.pack_forget()
+    anterior.pack(fill="both", expand=True)
+
+def menu_func(atual, menu): #Função para voltar ao menu dentro nas paginas temporarias do def
+    atual.pack_forget()
+    botao_menu_final = ctk.CTkButton(atual, text="Menu", command=menu())
+
+def apagar(label): #Função para apagar uma label
+    label.destroy()
 
 def pag_papelao(janela, menu, papelao, caixa):
     pagina_papelao = ctk.CTkFrame(janela)
