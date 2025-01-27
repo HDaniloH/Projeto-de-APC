@@ -17,7 +17,7 @@ def apagar(label): #Função para apagar uma label
 
 def pag_papel(janela, menu, rolo, papel, jornal): #Função do menu de papel.
 
-    pagina_papel = ctk.CTkFrame(janela) #Cria a pagina filha da janela principal.
+    pagina_papel = ctk.CTkFrame(janela) #Cria a pagina do menu do papel.
     pagina_papel._set_appearance_mode("dark")
 
     label2 = ctk.CTkLabel(pagina_papel, text="Escolha", font=("Arial", 24)) #Cria o texto do menu de papel: "Escolha".
@@ -39,6 +39,7 @@ def pag_papel(janela, menu, rolo, papel, jornal): #Função do menu de papel.
     botao_papel_menu = ctk.CTkButton(pagina_papel, text="Menu", font=("Arial", 24), width=100, height=40, command=menu) #Botão para voltar ao menu.
     botao_papel_menu._set_appearance_mode("dark")
     botao_papel_menu.pack(side="bottom", pady=20)
+
     return pagina_papel #Retorna a pagina do menu de papel.
 
 def pag_rolo_papel(janela, menu, voltar): #Função da página do rolo de papel.
@@ -642,10 +643,11 @@ def pag_papel_jornal(janela, menu, voltar): #Função da página do jornal.
     botao_jornal_papel_nao._set_appearance_mode("dark")
     botao_jornal_papel_nao.pack(pady=10)
 
-    botao_rolo_papel_menu = ctk.CTkButton(pagina_papel_jornal, text="Menu", font=("Arial", 24), width=100, height=40, command=menu) #Botão para voltar ao menu inicial.
-    botao_rolo_papel_menu._set_appearance_mode("dark")
-    botao_rolo_papel_menu.pack(side="bottom", pady=30)
-    botao_rolo_papel_voltar = ctk.CTkButton(pagina_papel_jornal, text="Voltar", font=("Arial", 24), width=100, height=40, command=voltar) #Botão para voltar à pagina anterior.
-    botao_rolo_papel_voltar._set_appearance_mode("dark")
-    botao_rolo_papel_voltar.pack(side="bottom", pady=10)
-    return pagina_papel_jornal
+    botao_jornal_menu = ctk.CTkButton(pagina_papel_jornal, text="Menu", font=("Arial", 24), width=100, height=40, command=menu) #Botão para voltar ao menu inicial.
+    botao_jornal_menu._set_appearance_mode("dark")
+    botao_jornal_menu.pack(side="bottom", pady=30)
+    botao_jornal_voltar = ctk.CTkButton(pagina_papel_jornal, text="Voltar", font=("Arial", 24), width=100, height=40, command=voltar) #Botão para voltar à pagina anterior.
+    botao_jornal_voltar._set_appearance_mode("dark")
+    botao_jornal_voltar.pack(side="bottom", pady=10)
+
+    return pagina_papel_jornal # Retorna a pagina do jornal.
