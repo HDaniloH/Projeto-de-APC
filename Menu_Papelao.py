@@ -1,5 +1,8 @@
 import customtkinter as ctk
 from tkinter import *
+from receitas_papelao import *
+
+lista_botao_receitas_caixa = [botao_receita, botao_receita2]
 
 def nao_entry(entrada): # Função para deletar o que esta escrito dentro da caixa de entrada
     entrada.delete(0, END)
@@ -101,17 +104,22 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
                     label4._set_appearance_mode("dark")
                     label4.pack(pady=20)
 
+                label_espaco_result = ctk.CTkLabel(pagina_papelao_lista_maior, text="")  # Label que cria um espaço na página.
+                label_espaco_result._set_appearance_mode("dark")
+                label_espaco_result.pack(side="bottom", pady=0)
+
                 botao_result_papelao_menu = ctk.CTkButton(pagina_papelao_lista_maior, text="Menu", font=("Arial", 24), # botao para voltar ao menu inicial dentro da pagina temporaria.
                                                           width=100, height=40,
                                                           command=lambda: menu_func(pagina_papelao_lista_maior, menu))
                 botao_result_papelao_menu._set_appearance_mode("dark")
-                botao_result_papelao_menu.pack(side="bottom", pady=30)
+                botao_result_papelao_menu.pack(side="bottom", pady=5)
+
                 botao_result_papelao_voltar = ctk.CTkButton(pagina_papelao_lista_maior, text="Voltar", font=("Arial", 24), # botao para voltar a pagina anterior dentro da pagina temporaria.
                                                             width=100, height=40,
                                                             command=lambda: voltar_func(pagina_papelao_lista_maior,
                                                                                      pagina_nao_menor))
                 botao_result_papelao_voltar._set_appearance_mode("dark")
-                botao_result_papelao_voltar.pack(side="bottom", pady=10)
+                botao_result_papelao_voltar.pack(side="bottom", pady=5)
 
         label_maior_m = ctk.CTkLabel(pagina_nao_menor,  # Texto que pede para digitar a quantidade de papelão.
                                      text="Digite a quantidade de papelão que você tem maior que 30 cm",
@@ -140,18 +148,23 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
         botao_papelao_nao_entry_n._set_appearance_mode("dark")
         botao_papelao_nao_entry_n.pack(pady=10)
 
+        label_espaco2 = ctk.CTkLabel(pagina_nao_menor, text="")  # Label que cria um espaço na página.
+        label_espaco2._set_appearance_mode("dark")
+        label_espaco2.pack(side="bottom", pady=0)
+
         botao_menu2 = ctk.CTkButton(pagina_nao_menor, text="Menu", font=("Arial", 24), width=100, height=40,
                                     # botao para voltar ao menu inicial dentro da pagina temporaria.
                                     command=lambda: menu_func(pagina_nao_menor, menu)
                                     )
         botao_menu2._set_appearance_mode("dark")
-        botao_menu2.pack(side="bottom", pady=30)
+        botao_menu2.pack(side="bottom", pady=5)
+
         botao_voltar2 = ctk.CTkButton(pagina_nao_menor, text="Voltar", font=("Arial", 24), width=100, height=40,
                                       # botao para voltar a pagina anterior dentro da pagina temporaria.
                                       command=lambda: voltar_func(pagina_nao_menor, pagina_papelao_e_)
                                       )
         botao_voltar2._set_appearance_mode("dark")
-        botao_voltar2.pack(side="bottom", pady=10)
+        botao_voltar2.pack(side="bottom", pady=5)
 
     def sim_menor():  # Função se for escolhida a opção "SIM" na primeira pergunta.
 
@@ -220,17 +233,22 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
                         label4._set_appearance_mode("dark")
                         label4.pack(pady=20)
 
+                    label_espaco3 = ctk.CTkLabel(pagina_papelao_lista, text="")  # Label que cria um espaço na página.
+                    label_espaco3._set_appearance_mode("dark")
+                    label_espaco3.pack(side="bottom", pady=0)
+
                     botao_result_rolo_menu = ctk.CTkButton(pagina_papelao_lista, text="Menu", font=("Arial", 24), # botao para voltar ao menu inicial dentro da pagina temporaria.
                                                            width=100, height=40,
                                                            command=lambda: menu_func(pagina_papelao_lista, menu))
                     botao_result_rolo_menu._set_appearance_mode("dark")
-                    botao_result_rolo_menu.pack(side="bottom", pady=30)
+                    botao_result_rolo_menu.pack(side="bottom", pady=5)
+
                     botao_result_rolo_voltar = ctk.CTkButton(pagina_papelao_lista, text="Voltar", font=("Arial", 24), # botao para voltar a pagina anterior dentro da pagina temporaria.
                                                              width=100, height=40,
                                                              command=lambda: voltar_func(pagina_papelao_lista,
                                                                                          pagina_nao_maior))
                     botao_result_rolo_voltar._set_appearance_mode("dark")
-                    botao_result_rolo_voltar.pack(side="bottom", pady=10)
+                    botao_result_rolo_voltar.pack(side="bottom", pady=5)
 
             label_menor_entry = ctk.CTkLabel(pagina_nao_maior, #Texto que pede para digitar a quantidade de papelão.
                                              text="Digite a quantidade de papelão que você tem menor que 30 cm",
@@ -259,14 +277,18 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
             botao_papelao_nao_entry._set_appearance_mode("dark")
             botao_papelao_nao_entry.pack(pady=10)
 
+            label_espaco2 = ctk.CTkLabel(pagina_nao_maior, text="")  # Label que cria um espaço na página.
+            label_espaco2._set_appearance_mode("dark")
+            label_espaco2.pack(side="bottom", pady=0)
+
             botao_menu2 = ctk.CTkButton(pagina_nao_maior, text="Menu", font=("Arial", 24), width=100, height=40, # botao para voltar ao menu inicial dentro da pagina temporaria.
                                         command=lambda: menu_func(pagina_nao_maior, menu))
             botao_menu2._set_appearance_mode("dark")
-            botao_menu2.pack(side="bottom", pady=30)
+            botao_menu2.pack(side="bottom", pady=5)
             botao_voltar2 = ctk.CTkButton(pagina_nao_maior, text="Voltar", font=("Arial", 24), width=100, height=40, # botao para voltar a pagina anterior dentro da pagina temporaria.
                                           command=lambda: voltar_func(pagina_nao_maior, pagina_sim_menor))
             botao_voltar2._set_appearance_mode("dark")
-            botao_voltar2.pack(side="bottom", pady=10)
+            botao_voltar2.pack(side="bottom", pady=5)
 
         def sim_maior():  # Função se for escolhida a opção "SIM" na segunda pergunta.
 
@@ -357,17 +379,22 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
                         label4._set_appearance_mode("dark")
                         label4.pack(pady=20)
 
+                    label_espaco2 = ctk.CTkLabel(pagina_papelao_lista, text="")  # Label que cria um espaço na página.
+                    label_espaco2._set_appearance_mode("dark")
+                    label_espaco2.pack(side="bottom", pady=0)
+
                     botao_result_rolo_menu = ctk.CTkButton(pagina_papelao_lista, text="Menu", font=("Arial", 24),  # botao para voltar ao menu inicial dentro da pagina temporaria.
                                                            width=100, height=40,
                                                            command=lambda: menu_func(pagina_papelao_lista, menu))
                     botao_result_rolo_menu._set_appearance_mode("dark")
-                    botao_result_rolo_menu.pack(side="bottom", pady=30)
+                    botao_result_rolo_menu.pack(side="bottom", pady=5)
+
                     botao_result_rolo_voltar = ctk.CTkButton(pagina_papelao_lista, text="Voltar", font=("Arial", 24),  # botao para voltar a pagina anterior dentro da pagina temporaria.
                                                              width=100, height=40,
                                                              command=lambda: voltar_func(pagina_papelao_lista,
                                                                                          pagina_sim_maior))
                     botao_result_rolo_voltar._set_appearance_mode("dark")
-                    botao_result_rolo_voltar.pack(side="bottom", pady=10)
+                    botao_result_rolo_voltar.pack(side="bottom", pady=5)
 
             label_menor_entry = ctk.CTkLabel(pagina_sim_maior, # Texto que pede para digitar a primeira quantidade de papelão.
                                              text="Digite a quantidade de papelão que você tem menor que 30 cm",
@@ -407,14 +434,18 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
             botao_papel_nao_entry._set_appearance_mode("dark")
             botao_papel_nao_entry.pack(pady=10)
 
+            label_espaco2 = ctk.CTkLabel(pagina_sim_maior, text="")  # Label que cria um espaço na página.
+            label_espaco2._set_appearance_mode("dark")
+            label_espaco2.pack(side="bottom", pady=0)
+
             botao_menu2 = ctk.CTkButton(pagina_sim_maior, text="Menu", font=("Arial", 24), width=100, height=40, # botao para voltar ao menu inicial dentro da pagina temporaria.
                                         command=lambda: menu_func(pagina_sim_maior, menu))
             botao_menu2._set_appearance_mode("dark")
-            botao_menu2.pack(side="bottom", pady=30)
+            botao_menu2.pack(side="bottom", pady=5)
             botao_voltar2 = ctk.CTkButton(pagina_sim_maior, text="Voltar", font=("Arial", 24), width=100, height=40, # botao para voltar a pagina anterior dentro da pagina temporaria.
                                           command=lambda: voltar_func(pagina_sim_maior, pagina_sim_menor))
             botao_voltar2._set_appearance_mode("dark")
-            botao_voltar2.pack(side="bottom", pady=10)
+            botao_voltar2.pack(side="bottom", pady=5)
 
         label_espaco = ctk.CTkLabel(pagina_sim_menor, text="",  # label para criar um espaço na pagina.
                                     font=("Arial", 24))
@@ -434,14 +465,18 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
         botao_papelao_nao_maior._set_appearance_mode("dark")
         botao_papelao_nao_maior.pack(pady=10)
 
+        label_espaco = ctk.CTkLabel(pagina_sim_menor, text="")  # Label que cria um espaço na página.
+        label_espaco._set_appearance_mode("dark")
+        label_espaco.pack(side="bottom", pady=0)
+
         botao_menu = ctk.CTkButton(pagina_sim_menor, text="Menu", font=("Arial", 24), width=100, height=40, # botao para voltar ao menu inicial dentro da pagina temporaria.
                                    command=lambda: menu_func(pagina_sim_menor, menu))
         botao_menu._set_appearance_mode("dark")
-        botao_menu.pack(side="bottom", pady=30)
+        botao_menu.pack(side="bottom", pady=5)
         botao_voltar = ctk.CTkButton(pagina_sim_menor, text="Voltar", font=("Arial", 24), width=100, height=40, # botao para voltar a pagina anterior dentro da pagina temporaria.
                                      command=lambda: voltar_func(pagina_sim_menor, pagina_papelao_e_))
         botao_voltar._set_appearance_mode("dark")
-        botao_voltar.pack(side="bottom", pady=10)
+        botao_voltar.pack(side="bottom", pady=5)
 
     label_papelao = ctk.CTkLabel(pagina_papelao_e_, text="", font=("Arial", 24))  # label para criar um espaço na pagina.
     label_papelao._set_appearance_mode("dark")
@@ -462,15 +497,19 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
     botao_papelao_nao._set_appearance_mode("dark")
     botao_papelao_nao.pack(pady=10)
 
+    label_espaco_papelao = ctk.CTkLabel(pagina_papelao_e_, text="")  # Label que cria um espaço na página.
+    label_espaco_papelao._set_appearance_mode("dark")
+    label_espaco_papelao.pack(side="bottom", pady=0)
+
     botao_papelao_e_menu = ctk.CTkButton(pagina_papelao_e_, text="Menu", font=("Arial", 24), command=menu, width=100, # Botão para voltar ao menu inicial.
                                          height=40)
     botao_papelao_e_menu._set_appearance_mode("dark")
-    botao_papelao_e_menu.pack(side="bottom", pady=30)
+    botao_papelao_e_menu.pack(side="bottom", pady=5)
 
     botao_papelao_voltar = ctk.CTkButton(pagina_papelao_e_, text="Voltar", font=("Arial", 24), command=voltar, # Botão para voltar à pagina anterior.
                                          width=100, height=40)
     botao_papelao_voltar._set_appearance_mode("dark")
-    botao_papelao_voltar.pack(side="bottom", pady=10)
+    botao_papelao_voltar.pack(side="bottom", pady=5)
 
     return pagina_papelao_e_ #retorna a pagina da escolha papelão.
 
@@ -501,45 +540,34 @@ def pag_caixa(janela, menu, voltar): #função da página da escolha "Caixa".
             pagina_lista_caixa._set_appearance_mode("dark")
             pagina_lista_caixa.pack(fill="both", expand=True)
 
+            label_receitas = ctk.CTkLabel(pagina_lista_caixa, text="Receitas", font=("Arial", 24))
+            label_receitas._set_appearance_mode("dark")
+            label_receitas.pack(pady=50)
+
             resultado = int(resultado)  # transforma o valor da variavel em inteiro.
 
             """Saída de dados:"""
-            if resultado == 1:  # verifica a quantidade.
+            if resultado > 0:  # verifica o valor da variavel.
 
                 # Receitas se tiver apenas uma quantidade:
-                label2 = ctk.CTkLabel(pagina_lista_caixa, text="Você consegue fazer apenas uma receita",
-                                      font=("Arial", 24))
-                label2._set_appearance_mode("dark")
-                label2.pack(pady=50)
 
-                label3 = ctk.CTkLabel(pagina_lista_caixa, text="Receita",
-                                      font=("Arial", 24))
-                label3._set_appearance_mode("dark")
-                label3.pack(pady=20)
+                for i in range(resultado):
+                    lista_botao_receitas_caixa[i](pagina_lista_caixa, janela, menu, menu_func, voltar_func).pack(pady=10)
 
-            if resultado == 2:  # verifica a quantidade.
-
-                # Receitas se tiver 2 quantidades:
-                label2 = ctk.CTkLabel(pagina_lista_caixa, text="Você consegue fazer estas receitas:",
-                                      font=("Arial", 24))
-                label2._set_appearance_mode("dark")
-                label2.pack(pady=50)
-                label3 = ctk.CTkLabel(pagina_lista_caixa, text="Receita 1", font=("Arial", 24))
-                label3._set_appearance_mode("dark")
-                label3.pack(pady=20)
-                label4 = ctk.CTkLabel(pagina_lista_caixa, text="Receita 2", font=("Arial", 24))
-                label4._set_appearance_mode("dark")
-                label4.pack(pady=20)
+            label_espaco = ctk.CTkLabel(pagina_lista_caixa, text="")  # Label que cria um espaço na página.
+            label_espaco._set_appearance_mode("dark")
+            label_espaco.pack(side="bottom", pady=0)
 
             botao_result_caixa_menu = ctk.CTkButton(pagina_lista_caixa, text="Menu", font=("Arial", 24), width=100, # botao para voltar ao menu inicial dentro da pagina temporaria.
                                                     height=40,
                                                     command=lambda: menu_func(pagina_lista_caixa, menu))
             botao_result_caixa_menu._set_appearance_mode("dark")
-            botao_result_caixa_menu.pack(side="bottom", pady=30)
+            botao_result_caixa_menu.pack(side="bottom", pady=5)
+
             botao_result_caixa_voltar = ctk.CTkButton(pagina_lista_caixa, text="Voltar", font=("Arial", 24), width=100, # botao para voltar a pagina anterior dentro da pagina temporaria.
                                                       height=40, command=lambda: voltar_func(pagina_lista_caixa, pagina_caixa))
             botao_result_caixa_voltar._set_appearance_mode("dark")
-            botao_result_caixa_voltar.pack(side="bottom", pady=10)
+            botao_result_caixa_voltar.pack(side="bottom", pady=5)
 
     label_rolo = ctk.CTkLabel(pagina_caixa, text="Caixa de Papelão", # Cria o texto da pagina da Caixa de Papelão: "Caixa de Papelão".
                               font=("Arial", 24))
@@ -570,13 +598,17 @@ def pag_caixa(janela, menu, voltar): #função da página da escolha "Caixa".
     botao_caixa_entry_nao._set_appearance_mode("dark")
     botao_caixa_entry_nao.pack(pady=10)
 
+    label_espaco = ctk.CTkLabel(pagina_caixa, text="")  # Label que cria um espaço na página.
+    label_espaco._set_appearance_mode("dark")
+    label_espaco.pack(side="bottom", pady=0)
+
     botao_caixa_menu = ctk.CTkButton(pagina_caixa, text="Menu", font=("Arial", 24), width=100, height=40, # Botão para voltar ao menu inicial.
                                      command=menu)
     botao_caixa_menu._set_appearance_mode("dark")
-    botao_caixa_menu.pack(side="bottom", pady=30)
+    botao_caixa_menu.pack(side="bottom", pady=5)
     botao_caixa_voltar = ctk.CTkButton(pagina_caixa, text="Voltar", font=("Arial", 24), width=100, height=40, # Botão para voltar a pagina anterior.
                                        command=voltar)
     botao_caixa_voltar._set_appearance_mode("dark")
-    botao_caixa_voltar.pack(side="bottom", pady=10)
+    botao_caixa_voltar.pack(side="bottom", pady=5)
 
     return pagina_caixa #retorna a pagina da caixa.

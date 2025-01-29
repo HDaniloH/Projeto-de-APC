@@ -1,5 +1,6 @@
 #importação de bibliotecas e arquivos.
 import customtkinter as ctk
+from PIL import Image, ImageTk
 from tkinter import *
 from Menu_Papel import *
 from Menu_Papelao import *
