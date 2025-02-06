@@ -62,18 +62,20 @@ tampa = lambda: atual_pagina(10)
 
 garrafas_vidro = lambda: atual_pagina(12)
 
+descarte = lambda: atual_pagina(13)
+
 #Páginas do Programa
 frames = [
     pag_menu(),                                                  #Menu Inicial
     pag_papel(janela, menu, rolo, papel, jornal),                #Inicio da parte do Papel.
-    pag_rolo_papel(janela, menu, lambda: atual_pagina(1)),
+    pag_rolo_papel(janela, menu, lambda: atual_pagina(1), descarte),
     pag_papel_escolha(janela, menu, lambda: atual_pagina(1)),
     pag_papel_jornal(janela, menu, lambda: atual_pagina(1)),
     pag_papelao(janela, menu, papelao, caixa),                   #Inicio da parte do Papelão.
     pag_papelao_escolha(janela, menu, lambda: atual_pagina(5)),
-    pag_caixa(janela, menu, lambda: atual_pagina(5)),
+    pag_caixa(janela, menu, lambda: atual_pagina(5), descarte),
     pag_plastico(janela, menu, garrafa_pet, tampa),              #Inicio da parte do Plástico.
-    pag_garrafa_PET(janela, menu, lambda: atual_pagina(8)),
+    pag_garrafa_PET(janela, menu, lambda: atual_pagina(8), descarte),
     pag_tampa(janela, menu, lambda: atual_pagina(8)),
     pag_menu_vidro(janela, menu, garrafas_vidro),
     pag_vidro(janela, menu, lambda: atual_pagina(11)),                                     #Parte do Vidro.

@@ -1,5 +1,12 @@
 import customtkinter as ctk
 from tkinter import *
+from receitas_papel import *
+
+def descarte_lista(pag_atual, descarte):
+    pag_atual.pack_forget()
+    descarte()
+
+lista_botao_receitas_rolo = [botao_receita, botao_receita2]
 
 def nao_entry(entrada): #Função para deletar o que esta escrito dentro da caixa de entrada
     entrada.delete(0, END)
@@ -42,7 +49,7 @@ def pag_papel(janela, menu, rolo, papel, jornal): #Função do menu de papel.
 
     return pagina_papel #Retorna a pagina do menu de papel.
 
-def pag_rolo_papel(janela, menu, voltar): #Função da página do rolo de papel.
+def pag_rolo_papel(janela, menu, voltar, descarte): #Função da página do rolo de papel.
     def sim(): #função se a opção sim for selecionada.
 
         resultado = entry.get() #Obtem a quantidade inserida no entry e a variavel recebe esse valor.
@@ -64,44 +71,44 @@ def pag_rolo_papel(janela, menu, voltar): #Função da página do rolo de papel.
             pagina_lista_rolo._set_appearance_mode("dark")
             pagina_lista_rolo.pack(fill="both", expand=True)
 
+            label_receitas = ctk.CTkLabel(pagina_lista_rolo, text="Receitas", font=("Arial", 24))
+            label_receitas._set_appearance_mode("dark")
+            label_receitas.pack(pady=50)
+
             resultado = int(resultado) #transforma o valor da variavel em inteiro.
 
             """Saída de dados:"""
-            if resultado == 1: #verifica a quantidade.
+            if resultado > 0:  # verifica o valor da variavel.
 
-                #Receitas se tiver apenas uma quantidade:
-                label2 = ctk.CTkLabel(pagina_lista_rolo, text="Você consegue fazer apenas uma receita",
-                                      font=("Arial", 24))
-                label2._set_appearance_mode("dark")
-                label2.pack(pady=50)
+                # Receitas:
 
-                label3 = ctk.CTkLabel(pagina_lista_rolo, text="Receita",
-                                      font=("Arial", 24))
-                label3._set_appearance_mode("dark")
-                label3.pack(pady=20)
+                for i in range(resultado):
+                    lista_botao_receitas_rolo[i](pagina_lista_rolo, janela, menu, menu_func, voltar_func).pack(pady=10)
 
-            if resultado == 2: #verifica a quantidade.
+                botao_descarte = ctk.CTkButton(pagina_lista_rolo, text="Descarte", # botao para ir a pagina de descarte caso o usuario nao queira fazer as receitas.
+                                               command=lambda: descarte_lista(pagina_lista_rolo, descarte))
+                botao_descarte._set_appearance_mode("dark")
+                botao_descarte.pack(pady=10)
 
-                #Receitas se tiver 2 quantidades:
-                label2 = ctk.CTkLabel(pagina_lista_rolo, text="Você consegue fazer estas receitas:",
-                                      font=("Arial", 24))
-                label2._set_appearance_mode("dark")
-                label2.pack(pady=50)
-                label3 = ctk.CTkLabel(pagina_lista_rolo, text="Receita 1", font=("Arial", 24))
-                label3._set_appearance_mode("dark")
-                label3.pack(pady=20)
-                label4 = ctk.CTkLabel(pagina_lista_rolo, text="Receita 2", font=("Arial", 24))
-                label4._set_appearance_mode("dark")
-                label4.pack(pady=20)
+            label_espaco_rolo_lista = ctk.CTkLabel(pagina_lista_rolo, text="")  # Label que cria um espaço na página.
+            label_espaco_rolo_lista._set_appearance_mode("dark")
+            label_espaco_rolo_lista.pack(side="bottom", pady=0)
+
+            botao_fim = ctk.CTkButton(pagina_lista_rolo, text="Fim", font=("Arial", 24), width=100, # Botão que avança para a página final.
+                                      height=40, fg_color="Red", text_color="White",
+                                      command=lambda: fim_receita(pagina_lista_rolo, janela, menu, menu_func, voltar_func))
+            botao_fim._set_appearance_mode("dark")
+            botao_fim.pack(side="bottom", pady=5)
 
             botao_result_rolo_menu = ctk.CTkButton(pagina_lista_rolo, text="Menu", font=("Arial", 24), width=100, height=40, #botao para voltar ao menu inicial dentro da pagina temporaria.
                                                    command=lambda: menu_func(pagina_lista_rolo, menu))
             botao_result_rolo_menu._set_appearance_mode("dark")
-            botao_result_rolo_menu.pack(side="bottom", pady=30)
+            botao_result_rolo_menu.pack(side="bottom", pady=5)
+
             botao_result_rolo_voltar = ctk.CTkButton(pagina_lista_rolo, text="Voltar", font=("Arial", 24), width=100, height=40,  #botao para voltar a pagina anterior dentro da pagina temporaria.
                                                      command=lambda: voltar_func(pagina_lista_rolo, pagina_rolo_papel))
             botao_result_rolo_voltar._set_appearance_mode("dark")
-            botao_result_rolo_voltar.pack(side="bottom", pady=10)
+            botao_result_rolo_voltar.pack(side="bottom", pady=5)
 
     pagina_rolo_papel = ctk.CTkFrame(janela) #Cria a pagina do rolo de papel.
     pagina_rolo_papel._set_appearance_mode("dark")
@@ -126,18 +133,24 @@ def pag_rolo_papel(janela, menu, voltar): #Função da página do rolo de papel.
     botao_rolo_papel_sim = ctk.CTkButton(pagina_rolo_papel, text="SIM", width=300, command=sim, fg_color="green") #Botão com a opção "SIM" que tem como comando a função sim().
     botao_rolo_papel_sim._set_appearance_mode("dark")
     botao_rolo_papel_sim.pack(pady=10)
+
     botao_rolo_papel_nao = ctk.CTkButton(pagina_rolo_papel, text="NÃO", width= 300, command=lambda: nao_entry(entry), fg_color="red") #Botão com a opção "NÃO" que tem como comando a função nao_entry().
     botao_rolo_papel_nao._set_appearance_mode("dark")
     botao_rolo_papel_nao.pack(pady=10)
 
+    label_espaco = ctk.CTkLabel(pagina_rolo_papel, text="")  # Label que cria um espaço na página.
+    label_espaco._set_appearance_mode("dark")
+    label_espaco.pack(side="bottom", pady=0)
+
     botao_rolo_papel_menu = ctk.CTkButton(pagina_rolo_papel, text="Menu", font=("Arial", 24), width=100, height=40, #Botão para voltar ao menu inicial.
                                           command=menu)
     botao_rolo_papel_menu._set_appearance_mode("dark")
-    botao_rolo_papel_menu.pack(side="bottom", pady=30)
+    botao_rolo_papel_menu.pack(side="bottom", pady=5)
+
     botao_rolo_papel_voltar = ctk.CTkButton(pagina_rolo_papel, text="Voltar", font=("Arial", 24), width=100, height=40, #Botão para voltar a pagina anterior.
                                             command=voltar)
     botao_rolo_papel_voltar._set_appearance_mode("dark")
-    botao_rolo_papel_voltar.pack(side="bottom", pady=10)
+    botao_rolo_papel_voltar.pack(side="bottom", pady=5)
 
     return pagina_rolo_papel #Retorna a pagina do rolo de papel.
 

@@ -2,9 +2,13 @@ import customtkinter as ctk
 from tkinter import *
 from receitas_papelao import *
 
-lista_botao_receitas_caixa = [botao_receita, botao_receita2]
+lista_botao_receitas_caixa = [botao_receita, botao_receita2, botao_receita3]
 
-def nao_entry(entrada): # Função para deletar o que esta escrito dentro da caixa de entrada
+def descarte_lista(pag_atual, descarte):
+    pag_atual.pack_forget()
+    descarte()
+
+def nao_entry(entrada):     # Função para deletar o que esta escrito dentro da caixa de entrada
     entrada.delete(0, END)
 
 def voltar_func(atual, anterior): # Função para voltar a pagina anterior dentro nas paginas temporarias do def
@@ -513,7 +517,7 @@ def pag_papelao_escolha(janela, menu, voltar): #Função da página da escolha "
 
     return pagina_papelao_e_ #retorna a pagina da escolha papelão.
 
-def pag_caixa(janela, menu, voltar): #função da página da escolha "Caixa".
+def pag_caixa(janela, menu, voltar, descarte): #função da página da escolha "Caixa".
 
     pagina_caixa = ctk.CTkFrame(janela) # Cria a página da escolha "Caixa".
     pagina_caixa._set_appearance_mode("dark")
@@ -553,10 +557,20 @@ def pag_caixa(janela, menu, voltar): #função da página da escolha "Caixa".
 
                 for i in range(resultado):
                     lista_botao_receitas_caixa[i](pagina_lista_caixa, janela, menu, menu_func, voltar_func).pack(pady=10)
+                botao_descarte = ctk.CTkButton(pagina_lista_caixa, text="Descarte", # botao para ir a pagina de descarte caso o usuario nao queira fazer as receitas.
+                                               command=lambda: descarte_lista(pagina_lista_caixa, descarte))
+                botao_descarte._set_appearance_mode("dark")
+                botao_descarte.pack(pady=10)
 
             label_espaco = ctk.CTkLabel(pagina_lista_caixa, text="")  # Label que cria um espaço na página.
             label_espaco._set_appearance_mode("dark")
             label_espaco.pack(side="bottom", pady=0)
+
+            botao_fim = ctk.CTkButton(pagina_lista_caixa, text="Fim", font=("Arial", 24), width=100, # botão para avançar para a pagina final.
+                                                    height=40, fg_color="Red", text_color="White",
+                                                    command=lambda: fim_receita(pagina_lista_caixa, janela, menu, menu_func, voltar_func))
+            botao_fim._set_appearance_mode("dark")
+            botao_fim.pack(side="bottom", pady=5)
 
             botao_result_caixa_menu = ctk.CTkButton(pagina_lista_caixa, text="Menu", font=("Arial", 24), width=100, # botao para voltar ao menu inicial dentro da pagina temporaria.
                                                     height=40,
