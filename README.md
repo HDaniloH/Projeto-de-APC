@@ -31,7 +31,7 @@ Programa:
 
 ### Acesso ao projeto
 
-Para acessar o código do projeto, faça o download do arquivo [**Projeto-de-APC**](https://github.com/HDaniloH/Projeto-de-APC)
+Para acessar o código do projeto, faça o download do arquivo ZIP [**Projeto-de-APC**](https://github.com/HDaniloH/Projeto-de-APC)
 
 ---
 
