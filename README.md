@@ -37,18 +37,35 @@ Para acessar o código do projeto, faça o download do arquivo [**Projeto-de-APC
 
 ### Abrir e rodar o projeto
 
-Para a execução do Programa: 
-1. Certifique-se de ter o Python 3 instalado em seu sistema.
-2. Instale a biblioteca `CustomTkinter` (Com o comando `pip install customtkinter` no terminal do windows).
-3. Instale a biblioteca `Pillow` (Com o comando `pip install customtkinter pillow` no terminal do windows).
-3. Execute o arquivo `Menu_Inicial.py` no terminal utilizando o comando:
+**Para a execução do programa pelo terminal:** 
+1. Certifique-se de ter o Python 3 instalado em seu sistema;
+2. Instale a biblioteca `CustomTkinter` (Com o comando `pip install customtkinter` no terminal do windows);
+3. Instale a biblioteca `Pillow` (Com o comando `pip install customtkinter pillow` no terminal do windows);
+4. No terminal avance até o diretorio da pasta do projeto;
+5. Execute o arquivo `Menu_Inicial.py` no terminal utilizando o comando:
 
    ```bash
    python Menu_Inicial.py
    ```
 
-4. Escolha o material que sera utilizado.
-5. Digite a quantidade de materiais.
+6. Escolha o material que sera utilizado;
+7. Digite a quantidade de materiais.
+
+**Para a execução do programa manualmente:** 
+1. Certifique-se de ter o Python 3 instalado em seu sistema;
+
+2. Instale a biblioteca `CustomTkinter` (Com o comando `pip install customtkinter` no terminal do windows);
+
+3. Instale a biblioteca `Pillow` (Com o comando `pip install customtkinter pillow` no terminal do windows);
+
+4. Vá na pasta do projeto;
+
+5. Clique no arquivo `Menu_Inicial.py`;
+
+6. Escolha o material que sera utilizado;
+
+7. Digite a quantidade de materiais.
+
 ---
 
 ### Tecnologias utilizadas
