@@ -54,8 +54,8 @@ Para a execução do Programa:
 ### Tecnologias utilizadas
 
 - **Python 3**
-- **Biblioteca CustomTkinter para criação da interface gráfica.**
-- **Biblioteca Tkinter para criação da interface gráfica.**
+- **Biblioteca Tkinter para a criação da interface gráfica.**
+- **Biblioteca CustomTkinter para a criação da interface gráfica moderna.**
 - **Biblioteca Pillow para inserir imagens na interface gráfica.**
 
 ### Bibliografia
