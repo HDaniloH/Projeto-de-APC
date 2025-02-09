@@ -25,19 +25,19 @@ def pag_menu():
     botao_papel._set_appearance_mode("dark")
     botao_papel.pack(pady=20)
 
-    botao_papelao = ctk.CTkButton(pagina_menu, text="Papelão", command=lambda: atual_pagina(5), fg_color="#8B4513", hover_color="#654321") # Botão para avançar ao Menu do Papelão.
+    botao_papelao = ctk.CTkButton(pagina_menu, text="Papelão", command=lambda: atual_pagina(4), fg_color="#8B4513", hover_color="#654321") # Botão para avançar ao Menu do Papelão.
     botao_papelao._set_appearance_mode("dark")
     botao_papelao.pack(pady=20)
 
-    botao_plastico = ctk.CTkButton(pagina_menu, text="Plástico", command=lambda: atual_pagina(8), fg_color="#A7C7E7", text_color="black", hover_color="#B0E0E6") # Botão para avançar ao Menu do Plástico.
+    botao_plastico = ctk.CTkButton(pagina_menu, text="Plástico", command=lambda: atual_pagina(7), fg_color="#A7C7E7", text_color="black", hover_color="#B0E0E6") # Botão para avançar ao Menu do Plástico.
     botao_plastico._set_appearance_mode("dark")
     botao_plastico.pack(pady=20)
 
-    botao_vidro = ctk.CTkButton(pagina_menu, text="Vidro", command=lambda: atual_pagina(11), fg_color="#CED4DA", hover_color="#6C757D", text_color="black") # Botão para avançar ao Menu do Vidro.
+    botao_vidro = ctk.CTkButton(pagina_menu, text="Vidro", command=lambda: atual_pagina(10), fg_color="#CED4DA", hover_color="#6C757D", text_color="black") # Botão para avançar ao Menu do Vidro.
     botao_vidro._set_appearance_mode("dark")
     botao_vidro.pack(pady=20)
 
-    botao_descarte = ctk.CTkButton(pagina_menu, text="Descarte", command=lambda: atual_pagina(13)) # Botão para avançar ao Menu do Descarte.
+    botao_descarte = ctk.CTkButton(pagina_menu, text="Descarte", command=lambda: atual_pagina(12)) # Botão para avançar ao Menu do Descarte.
     botao_descarte._set_appearance_mode("dark")
     botao_descarte.pack(pady=20)
 
@@ -52,33 +52,31 @@ menu = lambda: atual_pagina(0)
 
 rolo = lambda: atual_pagina(2)
 papel = lambda: atual_pagina(3)
-jornal = lambda: atual_pagina(4)
 
-papelao = lambda: atual_pagina(6)
-caixa = lambda: atual_pagina(7)
+papelao = lambda: atual_pagina(5)
+caixa = lambda: atual_pagina(6)
 
-garrafa_pet = lambda: atual_pagina(9)
-tampa = lambda: atual_pagina(10)
+garrafa_pet = lambda: atual_pagina(8)
+tampa = lambda: atual_pagina(9)
 
-garrafas_vidro = lambda: atual_pagina(12)
+garrafas_vidro = lambda: atual_pagina(11)
 
-descarte = lambda: atual_pagina(13)
+descarte = lambda: atual_pagina(12)
 
 #Páginas do Programa
 frames = [
     pag_menu(),                                                  #Menu Inicial
-    pag_papel(janela, menu, rolo, papel, jornal),                #Inicio da parte do Papel.
+    pag_papel(janela, menu, rolo, papel),                #Inicio da parte do Papel.
     pag_rolo_papel(janela, menu, lambda: atual_pagina(1), descarte),
-    pag_papel_escolha(janela, menu, lambda: atual_pagina(1)),
-    pag_papel_jornal(janela, menu, lambda: atual_pagina(1)),
+    pag_papel_escolha(janela, menu, lambda: atual_pagina(1), descarte),
     pag_papelao(janela, menu, papelao, caixa),                   #Inicio da parte do Papelão.
-    pag_papelao_escolha(janela, menu, lambda: atual_pagina(5)),
-    pag_caixa(janela, menu, lambda: atual_pagina(5), descarte),
+    pag_papelao_escolha(janela, menu, lambda: atual_pagina(4), descarte),
+    pag_caixa(janela, menu, lambda: atual_pagina(4), descarte),
     pag_plastico(janela, menu, garrafa_pet, tampa),              #Inicio da parte do Plástico.
-    pag_garrafa_PET(janela, menu, lambda: atual_pagina(8), descarte),
-    pag_tampa(janela, menu, lambda: atual_pagina(8)),
+    pag_garrafa_PET(janela, menu, lambda: atual_pagina(7), descarte),
+    pag_tampa(janela, menu, lambda: atual_pagina(7)),
     pag_menu_vidro(janela, menu, garrafas_vidro),
-    pag_vidro(janela, menu, lambda: atual_pagina(11)),                                     #Parte do Vidro.
+    pag_vidro(janela, menu, lambda: atual_pagina(10), descarte),                                     #Parte do Vidro.
     pag_descarte(janela, menu)                                   #Parte do Descarte.
 ]
 
