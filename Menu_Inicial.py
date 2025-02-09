@@ -8,12 +8,12 @@ from Menu_Plastico import *
 from Menu_Vidro import *
 from Menu_Descarte import *
 
-def atual_pagina(pagina): #Função para mostrar a pagina desejada.
+def atual_pagina(pagina): # Função para mostrar a pagina desejada.
     for frame in frames:
-        frame.pack_forget()  #Esconde todas as páginas
-    frames[pagina].pack(fill="both", expand=True)  #Mostra a página desejada
+        frame.pack_forget()  # Esconde todas as páginas
+    frames[pagina].pack(fill="both", expand=True)  # Mostra a página desejada
 
-#Menu inicial onde terão as opções dos materias que o usuario queira reciclar.
+# Menu inicial onde terão as opções dos materias que o usuario queira reciclar.
 def pag_menu():
     pagina_menu = ctk.CTkFrame(janela) #Cria a pagina principal menu dentro da janela.
     pagina_menu._set_appearance_mode("dark")
@@ -41,7 +41,7 @@ def pag_menu():
     botao_descarte._set_appearance_mode("dark")
     botao_descarte.pack(pady=20)
 
-    return pagina_menu #Retorna a página do menu.
+    return pagina_menu # Retorna a página do menu.
 
 janela = ctk.CTk() #Cria a Janela Principal que ira rodar o programa.
 janela.title("Reutilização de Resíduos Recicláveis")
