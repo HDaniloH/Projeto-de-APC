@@ -78,6 +78,9 @@ def pag_rolo_papel(janela, menu, voltar, descarte): #Função da página do rolo
             """Saída de dados:"""
 
             if resultado == 0:
+
+                # Texto se o resultado for 0.
+
                 label_triste = ctk.CTkLabel(pagina_lista_rolo, text=":(", font=("Arial", 40))
                 label_triste._set_appearance_mode("dark")
                 label_triste.pack(pady=20)
@@ -101,11 +104,11 @@ def pag_rolo_papel(janela, menu, voltar, descarte): #Função da página do rolo
             if resultado > 0:  # verifica o valor da variavel.
 
                 # Receitas:
-                if resultado < 3:
+                if resultado < 3: # Se for menor que 3 ele mostra na pagina a quantidade de botões baseado no resultado.
                     for i in range(resultado):
                         lista_botao_receitas_rolo[i](pagina_lista_rolo, janela, menu, menu_func, voltar_func).pack(pady=10) # Mostra os botões na página.
 
-                else:
+                else: # Se não ele mostra todos os botões da lista.
                     for i in range(len(lista_botao_receitas_rolo)):
                         lista_botao_receitas_rolo[i](pagina_lista_rolo, janela, menu, menu_func, voltar_func).pack(pady=10) # Mostra os botões na página.
 
@@ -221,11 +224,14 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                 """Saída de dados:"""
 
                 if resultado == 0:
+
+                    # Texto se o resultado for 0.
+
                     label_triste = ctk.CTkLabel(pagina_jornal_lista, text=":(", font=("Arial", 40))
                     label_triste._set_appearance_mode("dark")
                     label_triste.pack(pady=20)
 
-                    label_juntar = ctk.CTkLabel(pagina_jornal_lista, text="Junte mais jornais", font=("Arial", 30))
+                    label_juntar = ctk.CTkLabel(pagina_jornal_lista, text="Junte mais jornal", font=("Arial", 30))
                     label_juntar._set_appearance_mode("dark")
                     label_juntar.pack(pady=20)
 
@@ -244,10 +250,15 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                 if resultado > 0:  # verifica o valor da variavel.
 
                     # Receitas:
+                    if resultado < 3: # Se for menor que 3 ele mostra na pagina a quantidade de botões baseado no resultado.
+                        for i in range(resultado):
+                            lista_botao_receitas_jornal[i](pagina_jornal_lista, janela, menu, menu_func, voltar_func).pack( # Mostra os botões na página.
+                                pady=10)
 
-                    for i in range(resultado):
-                        lista_botao_receitas_jornal[i](pagina_jornal_lista, janela, menu, menu_func, voltar_func).pack( # Mostra os botões na página.
-                            pady=10)
+                    else: # Se não ele mostra todos os botões da lista.
+                        for i in range(len(lista_botao_receitas_jornal)):
+                            lista_botao_receitas_jornal[i](pagina_jornal_lista, janela, menu, menu_func, voltar_func).pack( # Mostra os botões na página.
+                                pady=10)
 
                     botao_descarte = ctk.CTkButton(pagina_jornal_lista, text="Descarte", # botao para ir a pagina de descarte caso o usuario nao queira fazer as receitas.
                                                    command=lambda: descarte_lista(pagina_jornal_lista, descarte))
@@ -259,26 +270,25 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                 label_espaco_papel_lista._set_appearance_mode("dark")
                 label_espaco_papel_lista.pack(side="bottom", pady=0)
 
-                botao_fim = ctk.CTkButton(pagina_jornal_lista, text="Fim", font=("Arial", 24), width=100,
-                                          # Botão que avança para a página final.
+                botao_fim = ctk.CTkButton(pagina_jornal_lista, text="Fim", font=("Arial", 24), width=100, # Botão que avança para a página final.
                                           height=40, fg_color="Red", text_color="White",
                                           command=lambda: fim_receita(pagina_jornal_lista, janela, menu, menu_func,
                                                                       voltar_func))
                 botao_fim._set_appearance_mode("dark")
                 botao_fim.pack(side="bottom", pady=5)
 
-                botao_result_jornal_menu = ctk.CTkButton(pagina_jornal_lista, text="Menu", font=("Arial", 24), width=100, height=40,  #botao para voltar ao menu inicial dentro da pagina temporaria.
+                botao_result_jornal_menu = ctk.CTkButton(pagina_jornal_lista, text="Menu", font=("Arial", 24), width=100, height=40, # botao para voltar ao menu inicial dentro da pagina temporaria.
                                                          command=lambda: menu_func(pagina_jornal_lista, menu))
                 botao_result_jornal_menu._set_appearance_mode("dark")
                 botao_result_jornal_menu.pack(side="bottom", pady=5)
 
-                botao_result_jornal_voltar = ctk.CTkButton(pagina_jornal_lista, text="Voltar", font=("Arial", 24), width=100, height=40,  #botao para voltar a pagina anterior dentro da pagina temporaria.
+                botao_result_jornal_voltar = ctk.CTkButton(pagina_jornal_lista, text="Voltar", font=("Arial", 24), width=100, height=40, # botao para voltar a pagina anterior dentro da pagina temporaria.
                                                            command=lambda: voltar_func(pagina_jornal_lista,
                                                                                        pagina_nao_papel))
                 botao_result_jornal_voltar._set_appearance_mode("dark")
                 botao_result_jornal_voltar.pack(side="bottom", pady=5)
 
-        label_maior_m = ctk.CTkLabel(pagina_nao_papel,  #Texto que pede para digitar a quantidade de folhas de jornal.
+        label_maior_m = ctk.CTkLabel(pagina_nao_papel, # Texto que pede para digitar a quantidade de folhas de jornal.
                                      text="Digite a quantidade de folhas de Jornal que você tem",
                                      font=("Arial", 24))
         label_maior_m._set_appearance_mode("dark")
@@ -290,15 +300,15 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
         entry_maior_n._set_appearance_mode("dark")
         entry_maior_n.pack()
 
-        label_certeza_entry_n = ctk.CTkLabel(pagina_nao_papel, width=300, text="Tem certeza?", font=("Arial", 24)) #Texto para perguntar se o usuario tem certeza que quer avançar
+        label_certeza_entry_n = ctk.CTkLabel(pagina_nao_papel, width=300, text="Tem certeza?", font=("Arial", 24)) # Texto para perguntar se o usuario tem certeza que quer avançar
         label_certeza_entry_n._set_appearance_mode("dark")
         label_certeza_entry_n.pack(pady=20)
 
-        botao_jornal_sim_entry_n = ctk.CTkButton(pagina_nao_papel, text="SIM", width=300, command=sim_entry_n,  #Botão com a opção "SIM" que tem como comando a função sim_entry_n().
+        botao_jornal_sim_entry_n = ctk.CTkButton(pagina_nao_papel, text="SIM", width=300, command=sim_entry_n,  # Botão com a opção "SIM" que tem como comando a função sim_entry_n().
                                                  fg_color="green")
         botao_jornal_sim_entry_n._set_appearance_mode("dark")
         botao_jornal_sim_entry_n.pack(pady=10)
-        botao_jornal_nao_entry_n = ctk.CTkButton(pagina_nao_papel, text="NÃO", width=300, command=lambda: nao_entry(entry_maior_n),  #Botão com a opção "NÃO" que tem como comando a função nao_entry().
+        botao_jornal_nao_entry_n = ctk.CTkButton(pagina_nao_papel, text="NÃO", width=300, command=lambda: nao_entry(entry_maior_n),  # Botão com a opção "NÃO" que tem como comando a função nao_entry().
                                                  fg_color="red")
         botao_jornal_nao_entry_n._set_appearance_mode("dark")
         botao_jornal_nao_entry_n.pack(pady=10)
@@ -308,53 +318,53 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
         label_espaco_nao_papel._set_appearance_mode("dark")
         label_espaco_nao_papel.pack(side="bottom", pady=0)
 
-        botao_menu2 = ctk.CTkButton(pagina_nao_papel, text="Menu", font=("Arial", 24), width=100, height=40,  #botao para voltar ao menu inicial dentro da pagina temporaria.
+        botao_menu2 = ctk.CTkButton(pagina_nao_papel, text="Menu", font=("Arial", 24), width=100, height=40,  # botao para voltar ao menu inicial dentro da pagina temporaria.
                                     command=lambda: menu_func(pagina_nao_papel, menu)
                                     )
         botao_menu2._set_appearance_mode("dark")
         botao_menu2.pack(side="bottom", pady=5)
 
-        botao_voltar2 = ctk.CTkButton(pagina_nao_papel, text="Voltar", font=("Arial", 24), width=100, height=40,  #botao para voltar a pagina anterior dentro da pagina temporaria.
+        botao_voltar2 = ctk.CTkButton(pagina_nao_papel, text="Voltar", font=("Arial", 24), width=100, height=40,  # botao para voltar a pagina anterior dentro da pagina temporaria.
                                       command=lambda: voltar_func(pagina_nao_papel, pagina_papel_escolha)
                                       )
         botao_voltar2._set_appearance_mode("dark")
         botao_voltar2.pack(side="bottom", pady=5)
 
-    def sim_papel(): #Função se for escolhida a opção "SIM" na primeira pergunta.
+    def sim_papel(): # Função se for escolhida a opção "SIM" na primeira pergunta.
 
-        pagina_papel_escolha.pack_forget()  #"Esquece" a pagina antiga ou fecha a pagina antiga.
+        pagina_papel_escolha.pack_forget()  # "Esquece" a pagina antiga ou fecha a pagina antiga.
 
-        pagina_sim_papel = ctk.CTkFrame(janela) #Cria uma nova pagina
+        pagina_sim_papel = ctk.CTkFrame(janela) # Cria uma nova pagina
         pagina_sim_papel._set_appearance_mode("dark")
         pagina_sim_papel.pack(fill="both", expand=True)
 
-        def nao_jornal(): #Função se for escolhida a opção "NÃO" na segunda pergunta.
+        def nao_jornal(): # Função se for escolhida a opção "NÃO" na segunda pergunta.
 
-            pagina_sim_papel.pack_forget() #"Esquece" a pagina antiga ou fecha a pagina antiga.
+            pagina_sim_papel.pack_forget() # "Esquece" a pagina antiga ou fecha a pagina antiga.
 
-            pagina_nao_jornal = ctk.CTkFrame(janela) #Cria uma nova pagina
+            pagina_nao_jornal = ctk.CTkFrame(janela) # Cria uma nova pagina
             pagina_nao_jornal._set_appearance_mode("dark")
             pagina_nao_jornal.pack(fill="both", expand=True)
 
-            def sim_entry(): #Função se for escolhida a opção "SIM" na pergunta de certeza.
+            def sim_entry(): # Função se for escolhida a opção "SIM" na pergunta de certeza.
 
-                resultado_papel = entry.get() #Obtem a quantidade inserida no entry e a variavel recebe esse valor.
+                resultado_papel = entry.get() # Obtem a quantidade inserida no entry e a variavel recebe esse valor.
 
                 """Processamento de dados:"""
-                if resultado_papel.isdigit() == False: #Verifica se o valor da variavel é um digito inteiro.
+                if resultado_papel.isdigit() == False: # Verifica se o valor da variavel é um digito inteiro.
 
-                    label_invalida = ctk.CTkLabel(pagina_nao_jornal,  #se nao for um digito inteiro este texto aparece na tela.
+                    label_invalida = ctk.CTkLabel(pagina_nao_jornal,  # se nao for um digito inteiro este texto aparece na tela.
                                                   text="Quantidade Invalida! Digite uma quantidade valida.",
                                                   font=("Arial", 24), fg_color="#000000", corner_radius=10, height=40)
                     label_invalida._set_appearance_mode("dark")
                     label_invalida.pack(pady=50)
-                    pagina_nao_jornal.after(3000, apagar, label_invalida) #apaga o texto depois de 3 segundos.
+                    pagina_nao_jornal.after(3000, apagar, label_invalida) # apaga o texto depois de 3 segundos.
 
-                elif resultado_papel.isdigit() == True: #Verifica se o valor da variavel é um digito inteiro.
+                elif resultado_papel.isdigit() == True: # Verifica se o valor da variavel é um digito inteiro.
 
-                    pagina_nao_jornal.pack_forget() #"Esquece" a pagina antiga ou fecha a pagina antiga.
+                    pagina_nao_jornal.pack_forget() # "Esquece" a pagina antiga ou fecha a pagina antiga.
 
-                    pagina_papel_lista = ctk.CTkFrame(janela) #Cria uma nova pagina
+                    pagina_papel_lista = ctk.CTkFrame(janela) # Cria uma nova pagina
                     pagina_papel_lista._set_appearance_mode("dark")
                     pagina_papel_lista.pack(fill="both", expand=True)
 
@@ -362,11 +372,14 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                     label_receitas._set_appearance_mode("dark")
                     label_receitas.pack(pady=50)
 
-                    resultado_papel = int(resultado_papel) #transforma o valor da variavel em inteiro.
+                    resultado_papel = int(resultado_papel) # transforma o valor da variavel em inteiro.
 
                     """Saída de dados:"""
 
                     if resultado_papel == 0:
+
+                        #texto se o resultado_papel for 0.
+
                         label_triste = ctk.CTkLabel(pagina_papel_lista, text=":(", font=("Arial", 40))
                         label_triste._set_appearance_mode("dark")
                         label_triste.pack(pady=20)
@@ -390,11 +403,17 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                     if resultado_papel > 0:  # verifica o valor da variavel.
 
                         # Receitas:
+                        if resultado_papel < 3: # Se for menor que 3 ele mostra na pagina a quantidade de botões baseado no resultado_papel.
+                            for i in range(resultado_papel):
+                                lista_botao_receitas_papel[i](pagina_papel_lista, janela, menu, menu_func, # Mostra os botões na página.
+                                                               voltar_func).pack(
+                                    pady=10)
 
-                        for i in range(resultado_papel):
-                            lista_botao_receitas_papel[i](pagina_papel_lista, janela, menu, menu_func, # Mostra os botões na página.
-                                                           voltar_func).pack(
-                                pady=10)
+                        else: # Se não ele mostra na pagina todos os botões da lista.
+                            for i in range(len(lista_botao_receitas_papel)):
+                                lista_botao_receitas_papel[i](pagina_papel_lista, janela, menu, menu_func, # Mostra os botões na página.
+                                                               voltar_func).pack(
+                                    pady=10)
 
                         botao_descarte = ctk.CTkButton(pagina_papel_lista, text="Descarte", # botao para ir a pagina de descarte caso o usuario nao queira fazer as receitas.
                                                        command=lambda: descarte_lista(pagina_papel_lista, descarte))
@@ -414,12 +433,12 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                     botao_fim._set_appearance_mode("dark")
                     botao_fim.pack(side="bottom", pady=5)
 
-                    botao_result_papel_menu = ctk.CTkButton(pagina_papel_lista, text="Menu", font=("Arial", 24), width=100, height=40,  #botao para voltar ao menu inicial dentro da pagina temporaria.
+                    botao_result_papel_menu = ctk.CTkButton(pagina_papel_lista, text="Menu", font=("Arial", 24), width=100, height=40,  # botao para voltar ao menu inicial dentro da pagina temporaria.
                                                             command=lambda: menu_func(pagina_papel_lista, menu))
                     botao_result_papel_menu._set_appearance_mode("dark")
                     botao_result_papel_menu.pack(side ="bottom", pady=5)
 
-                    botao_result_papel_voltar = ctk.CTkButton(pagina_papel_lista, text="Voltar", font=("Arial", 24), width=100, height=40,  #botao para voltar a pagina anterior dentro da pagina temporaria.
+                    botao_result_papel_voltar = ctk.CTkButton(pagina_papel_lista, text="Voltar", font=("Arial", 24), width=100, height=40,  # botao para voltar a pagina anterior dentro da pagina temporaria.
                                                               command=lambda: voltar_func(pagina_papel_lista, pagina_nao_jornal))
                     botao_result_papel_voltar._set_appearance_mode("dark")
                     botao_result_papel_voltar.pack(side ="bottom", pady=5)
@@ -436,15 +455,15 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
             entry._set_appearance_mode("dark")
             entry.pack()
 
-            label_certeza_entry = ctk.CTkLabel(pagina_nao_jornal, width=300, text="Tem certeza?", font=("Arial", 24)) #Texto para perguntar se o usuario tem certeza que quer avançar
+            label_certeza_entry = ctk.CTkLabel(pagina_nao_jornal, width=300, text="Tem certeza?", font=("Arial", 24)) # Texto para perguntar se o usuario tem certeza que quer avançar
             label_certeza_entry._set_appearance_mode("dark")
             label_certeza_entry.pack(pady=20)
 
-            botao_papel_sim_entry = ctk.CTkButton(pagina_nao_jornal, text="SIM", width=300, command=sim_entry,  #Botão com a opção "SIM" que tem como comando a função sim_entry().
+            botao_papel_sim_entry = ctk.CTkButton(pagina_nao_jornal, text="SIM", width=300, command=sim_entry,  # Botão com a opção "SIM" que tem como comando a função sim_entry().
                                                   fg_color="green")
             botao_papel_sim_entry._set_appearance_mode("dark")
             botao_papel_sim_entry.pack(pady=10)
-            botao_papel_nao_entry = ctk.CTkButton(pagina_nao_jornal, text="NÃO", width=300, command=lambda: nao_entry(entry),  #Botão com a opção "NÃO" que tem como comando a função nao_entry().
+            botao_papel_nao_entry = ctk.CTkButton(pagina_nao_jornal, text="NÃO", width=300, command=lambda: nao_entry(entry),  # Botão com a opção "NÃO" que tem como comando a função nao_entry().
                                                   fg_color="red")
             botao_papel_nao_entry._set_appearance_mode("dark")
             botao_papel_nao_entry.pack(pady=10)
@@ -454,44 +473,44 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
             label_espaco_nao_maior._set_appearance_mode("dark")
             label_espaco_nao_maior.pack(side="bottom", pady=0)
 
-            botao_menu2 = ctk.CTkButton(pagina_nao_jornal, text="Menu", font=("Arial", 24), width=100, height=40,  #botao para voltar ao menu inicial dentro da pagina temporaria.
+            botao_menu2 = ctk.CTkButton(pagina_nao_jornal, text="Menu", font=("Arial", 24), width=100, height=40,  # botao para voltar ao menu inicial dentro da pagina temporaria.
                                         command=lambda: menu_func(pagina_nao_jornal, menu))
             botao_menu2._set_appearance_mode("dark")
             botao_menu2.pack(side= "bottom", pady=5)
 
-            botao_voltar2 = ctk.CTkButton(pagina_nao_jornal, text="Voltar", font=("Arial", 24), width=100, height=40,  #botao para voltar a pagina anterior dentro da pagina temporaria.
+            botao_voltar2 = ctk.CTkButton(pagina_nao_jornal, text="Voltar", font=("Arial", 24), width=100, height=40,  # botao para voltar a pagina anterior dentro da pagina temporaria.
                                           command=lambda: voltar_func(pagina_nao_jornal, pagina_sim_papel))
             botao_voltar2._set_appearance_mode("dark")
             botao_voltar2.pack(side= "bottom", pady=5)
 
-        def sim_jornal(): #Função se for escolhida a opção "SIM" na segunda pergunta.
+        def sim_jornal(): # Função se for escolhida a opção "SIM" na segunda pergunta.
 
-            pagina_sim_papel.pack_forget() #"Esquece" a pagina antiga ou fecha a pagina antiga.
+            pagina_sim_papel.pack_forget() # "Esquece" a pagina antiga ou fecha a pagina antiga.
 
-            pagina_sim_jornal = ctk.CTkFrame(janela) #Cria uma nova pagina
+            pagina_sim_jornal = ctk.CTkFrame(janela) # Cria uma nova pagina
             pagina_sim_jornal._set_appearance_mode("dark")
             pagina_sim_jornal.pack(fill="both", expand=True)
 
-            def nao_entry_plus(): #Função para deletar o que esta escrito dentro das duas caixas de entrada.
+            def nao_entry_plus(): # Função para deletar o que esta escrito dentro das duas caixas de entrada.
                 entry_papel.delete(0, END)
                 entry_jornal.delete(0, END)
 
-            def sim_entry(): #Função se for escolhida a opção "SIM" na pergunta de certeza.
+            def sim_entry(): # Função se for escolhida a opção "SIM" na pergunta de certeza.
 
-                resultado_papel = entry_papel.get() #Obtem a quantidade inserida no primeiro entry e a variavel recebe esse valor.
-                resultado_jornal = entry_jornal.get() #Obtem a quantidade inserida no segundo entry e a variavel recebe esse valor.
+                resultado_papel = entry_papel.get() # Obtem a quantidade inserida no primeiro entry e a variavel recebe esse valor.
+                resultado_jornal = entry_jornal.get() # Obtem a quantidade inserida no segundo entry e a variavel recebe esse valor.
 
                 """Processamento de dados:"""
-                if resultado_papel.isdigit() == False: #Verifica se o valor da primeira variavel é um digito inteiro.
+                if resultado_papel.isdigit() == False: # Verifica se o valor da primeira variavel é um digito inteiro.
 
-                    label_invalida = ctk.CTkLabel(pagina_sim_jornal,  #se nao for um digito inteiro este texto aparece na tela.
+                    label_invalida = ctk.CTkLabel(pagina_sim_jornal,  # se nao for um digito inteiro este texto aparece na tela.
                                                   text="A Primeira Quantidade está Invalida! Digite uma quantidade valida.",
                                                   font=("Arial", 24), fg_color="#000000", corner_radius=10, height=40)
                     label_invalida._set_appearance_mode("dark")
                     label_invalida.pack(pady=50)
-                    pagina_sim_jornal.after(3000, apagar, label_invalida) #apaga o texto depois de 3 segundos.
+                    pagina_sim_jornal.after(3000, apagar, label_invalida) # apaga o texto depois de 3 segundos.
 
-                if resultado_jornal.isdigit() == False: #Verifica se o valor da segunda variavel é um digito inteiro.
+                if resultado_jornal.isdigit() == False: # Verifica se o valor da segunda variavel é um digito inteiro.
 
                     label_invalida2 = ctk.CTkLabel(pagina_sim_jornal,  #se nao for um digito inteiro este texto aparece na tela.
                                                    text="A Segunda Quantidade está Invalida! Digite uma quantidade valida.",
@@ -499,22 +518,24 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
 
                     label_invalida2._set_appearance_mode("dark")
                     label_invalida2.pack(pady=50)
-                    pagina_sim_jornal.after(3000, apagar, label_invalida2) #apaga o texto depois de 3 segundos.
+                    pagina_sim_jornal.after(3000, apagar, label_invalida2) # apaga o texto depois de 3 segundos.
 
-                elif resultado_papel.isdigit() == True and resultado_jornal.isdigit() == True: #Verifica se o valor das duas variaveis é um digito inteiro.
+                elif resultado_papel.isdigit() == True and resultado_jornal.isdigit() == True: # Verifica se o valor das duas variaveis é um digito inteiro.
 
-                    pagina_sim_jornal.pack_forget() #"Esquece" a pagina antiga ou fecha a pagina antiga.
+                    pagina_sim_jornal.pack_forget() # "Esquece" a pagina antiga ou fecha a pagina antiga.
 
                     pagina_folhas_lista = ctk.CTkFrame(janela) #Cria uma nova pagina
                     pagina_folhas_lista._set_appearance_mode("dark")
                     pagina_folhas_lista.pack(fill="both", expand=True)
 
-                    resultado_papel = int(resultado_papel) #transforma o valor da variavel em inteiro.
-                    resultado_jornal = int(resultado_jornal) #transforma o valor da variavel em inteiro.
+                    resultado_papel = int(resultado_papel) # transforma o valor da variavel em inteiro.
+                    resultado_jornal = int(resultado_jornal) # transforma o valor da variavel em inteiro.
 
                     """Saída de dados:"""
 
                     if resultado_papel == 0 and resultado_jornal == 0:
+
+                        # Texto se o resultado das duas variaveis for 0.
 
                         label_triste_espaco = ctk.CTkLabel(pagina_folhas_lista, text="", font=("Arial", 40))
                         label_triste_espaco._set_appearance_mode("dark")
@@ -524,7 +545,7 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                         label_triste._set_appearance_mode("dark")
                         label_triste.pack(pady=20)
 
-                        label_juntar = ctk.CTkLabel(pagina_folhas_lista, text="Junte mais caixas", font=("Arial", 30))
+                        label_juntar = ctk.CTkLabel(pagina_folhas_lista, text="Junte mais papel e jornal", font=("Arial", 30))
                         label_juntar._set_appearance_mode("dark")
                         label_juntar.pack(pady=20)
 
@@ -547,13 +568,13 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                         label_receitas_jornal._set_appearance_mode("dark")
                         label_receitas_jornal.pack(pady=40)
 
-                        if resultado_jornal < 3:
+                        if resultado_jornal < 3: # Se for menor que 3 ele mostra na pagina a quantidade de botões baseado no resultado_jornal.
                             for i in range(resultado_jornal):
                                 lista_botao_receitas_jornal[i](pagina_folhas_lista, janela, menu, menu_func,
                                                                voltar_func).pack(  # Mostra os botões na página.
                                     pady=10)
 
-                        else:
+                        else: # Se não ele mostra na pagina todos os botões
                             for i in range(len(lista_botao_receitas_jornal)):
                                 lista_botao_receitas_jornal[i](pagina_folhas_lista, janela, menu, menu_func,
                                                                voltar_func).pack(  # Mostra os botões na página.
@@ -571,12 +592,12 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                         label_receitas_papel._set_appearance_mode("dark")
                         label_receitas_papel.pack(pady=50)
 
-                        if resultado_papel < 3:
+                        if resultado_papel < 3: # Se for menor que 3 ele mostra na pagina a quantidade de botões baseado no resultado_papel.
                             for i in range(resultado_papel):
                                 lista_botao_receitas_papel[i](pagina_folhas_lista, janela, menu, menu_func, # Mostra os botões na página.
                                                               voltar_func).pack(pady=10)
 
-                        else:
+                        else: # Se não ele mostra na pagina todos os botões
                             for i in range(len(lista_botao_receitas_papel)):
                                 lista_botao_receitas_papel[i](pagina_folhas_lista, janela, menu, menu_func,
                                                               voltar_func).pack(  # Mostra os botões na página.
@@ -594,13 +615,13 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                         label_receitas_papel._set_appearance_mode("dark")
                         label_receitas_papel.pack(pady=50)
 
-                        if resultado_papel < 3:
+                        if resultado_papel < 3: # Se for menor que 3 ele mostra na pagina a quantidade de botões baseado no resultado_papel.
                             for i in range(resultado_papel):
                                 lista_botao_receitas_papel[i](pagina_folhas_lista, janela, menu, menu_func,
                                                               # Mostra os botões na página.
                                                               voltar_func).pack(pady=10)
 
-                        else:
+                        else: # Se não ele mostra na pagina todos os botões
                             for i in range(len(lista_botao_receitas_papel)):
                                 lista_botao_receitas_papel[i](pagina_folhas_lista, janela, menu, menu_func,
                                                               voltar_func).pack(  # Mostra os botões na página.
@@ -611,12 +632,12 @@ def pag_papel_escolha(janela, menu, voltar, descarte): #Função da página da e
                         label_receitas_jornal._set_appearance_mode("dark")
                         label_receitas_jornal.pack(pady=40)
 
-                        if resultado_jornal < 3:
+                        if resultado_jornal < 3: # Se for menor que 3 ele mostra na pagina a quantidade de botões baseado no resultado_jornal.
                             for i in range(resultado_jornal):
                                 lista_botao_receitas_jornal[i](pagina_folhas_lista, janela, menu, menu_func, voltar_func).pack( # Mostra os botões na página.
                                     pady=10)
 
-                        else:
+                        else: # Se não ele mostra na pagina todos os botões
                             for i in range(len(lista_botao_receitas_jornal)):
                                 lista_botao_receitas_jornal[i](pagina_folhas_lista, janela, menu, menu_func,
                                                                voltar_func).pack(  # Mostra os botões na página.

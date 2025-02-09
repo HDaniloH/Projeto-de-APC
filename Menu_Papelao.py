@@ -82,6 +82,8 @@ def pag_papelao_escolha(janela, menu, voltar, descarte): #Função da página da
             """Saída de dados:"""
             if resultado_papelao == 0:
 
+                # Texto se o resultado for 0.
+
                 label_triste = ctk.CTkLabel(pagina_papelao_lista, text=":(", font=("Arial", 40))
                 label_triste._set_appearance_mode("dark")
                 label_triste.pack(pady=20)
@@ -230,6 +232,8 @@ def pag_caixa(janela, menu, voltar, descarte): #função da página da escolha "
             """Saída de dados:"""
 
             if resultado == 0:
+
+                # Texto se o resultado for 0.
 
                 label_triste = ctk.CTkLabel(pagina_lista_caixa, text=":(", font=("Arial", 40))
                 label_triste._set_appearance_mode("dark")

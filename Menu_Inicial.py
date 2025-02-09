@@ -44,6 +44,7 @@ def pag_menu():
     return pagina_menu #Retorna a página do menu.
 
 janela = ctk.CTk() #Cria a Janela Principal que ira rodar o programa.
+janela.title("Reutilização de Resíduos Recicláveis")
 janela.geometry("800x500")
 janela._set_appearance_mode("dark")
 
@@ -66,7 +67,7 @@ descarte = lambda: atual_pagina(12)
 #Páginas do Programa
 frames = [
     pag_menu(),                                                  #Menu Inicial
-    pag_papel(janela, menu, rolo, papel),                #Inicio da parte do Papel.
+    pag_papel(janela, menu, rolo, papel),                        #Inicio da parte do Papel.
     pag_rolo_papel(janela, menu, lambda: atual_pagina(1), descarte),
     pag_papel_escolha(janela, menu, lambda: atual_pagina(1), descarte),
     pag_papelao(janela, menu, papelao, caixa),                   #Inicio da parte do Papelão.
@@ -75,8 +76,8 @@ frames = [
     pag_plastico(janela, menu, garrafa_pet, tampa),              #Inicio da parte do Plástico.
     pag_garrafa_PET(janela, menu, lambda: atual_pagina(7), descarte),
     pag_tampa(janela, menu, lambda: atual_pagina(7)),
-    pag_menu_vidro(janela, menu, garrafas_vidro),
-    pag_vidro(janela, menu, lambda: atual_pagina(10), descarte),                                     #Parte do Vidro.
+    pag_menu_vidro(janela, menu, garrafas_vidro),                #Parte do Vidro.
+    pag_vidro(janela, menu, lambda: atual_pagina(10), descarte),
     pag_descarte(janela, menu)                                   #Parte do Descarte.
 ]
 

@@ -84,11 +84,13 @@ def pag_garrafa_PET(janela, menu, voltar, descarte): # Função da página da ga
 
             if resultado == 0:
 
+                # Texto se o resultado for 0
+
                 label_triste = ctk.CTkLabel(pagina, text=":(", font=("Arial", 40))
                 label_triste._set_appearance_mode("dark")
                 label_triste.pack(pady=20)
 
-                label_juntar = ctk.CTkLabel(pagina, text="Junte mais caixas", font=("Arial", 30))
+                label_juntar = ctk.CTkLabel(pagina, text="Junte mais garrafas PET", font=("Arial", 30))
                 label_juntar._set_appearance_mode("dark")
                 label_juntar.pack(pady=20)
 
@@ -118,7 +120,7 @@ def pag_garrafa_PET(janela, menu, voltar, descarte): # Função da página da ga
 
             if 1 < resultado < 5:  # verifica o valor da variavel.
 
-                # Receitas se tiver apenas uma quantidade:
+                # Receitas se tiver mais que uma quantidade e menos que cinco:
                 for i in range(2):
                     lista_botao_receitas_garrafa[i](pagina, janela, menu, menu_func, voltar_func).pack(pady=10)
 
@@ -130,7 +132,7 @@ def pag_garrafa_PET(janela, menu, voltar, descarte): # Função da página da ga
 
             if resultado >= 5:  # verifica o valor da variavel.
 
-                # Receitas se tiver apenas uma quantidade:
+                # Receitas se tiver cinco ou mais quantidades:
                 for i in range(len(lista_botao_receitas_garrafa)):
                     lista_botao_receitas_garrafa[i](pagina, janela, menu, menu_func, voltar_func).pack(pady=10)
 
@@ -223,6 +225,8 @@ def pag_tampa(janela, menu, voltar):
         label_espaco._set_appearance_mode("dark")
         label_espaco.pack(pady=50)
 
+        # Texto caso a pessoa não tenha tampas.
+
         label_triste = ctk.CTkLabel(pagina_tampa_nao, text=":(", font=("Arial", 40))
         label_triste._set_appearance_mode("dark")
         label_triste.pack(pady=20)
@@ -241,7 +245,7 @@ def pag_tampa(janela, menu, voltar):
         label_obrigado._set_appearance_mode("dark")
         label_obrigado.pack(pady=20)
 
-        label_espaco2 = ctk.CTkLabel(pagina_tampa_nao, text="")
+        label_espaco2 = ctk.CTkLabel(pagina_tampa_nao, text="") # Label que cria um espaço na pagina.
         label_espaco2._set_appearance_mode("dark")
         label_espaco2.pack(side="bottom", pady=0)
 
